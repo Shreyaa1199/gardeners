@@ -22,11 +22,11 @@ if(isset($_POST['send'])){
     if(mysqli_num_rows($select_message) > 0){
         $message[] = 'message sent already!';
     }
-    // updated 
+    
     if (!preg_match('/^9\d{9}$/', $number)) {
         $message[] = 'Please enter a valid 10-digit number starting with 9.';
     }
-    // till here 
+    
     
     else{
         mysqli_query($conn, "INSERT INTO `message`(user_id, name, email, number, message) VALUES('$user_id', '$name', '$email', '$number', '$msg')") or die('query failed');
@@ -67,8 +67,8 @@ if(isset($_POST['send'])){
 
         <form action="" method="POST">
             <h3>send us message!</h3>
-            <input type="text" name="name" placeholder="enter your name" class="box" required>
-            <input type="email" name="email" placeholder="enter your email" class="box" required>
+            <input type="text" name="name" placeholder="enter your full name" class="box" required>
+            <input type="email" name="email" placeholder="enter your email address" class="box" required>
             <input type="number" name="number" placeholder="enter your number" class="box" required>
             <textarea name="message" class="box" placeholder="enter your message" required cols="30"
                 rows="10"></textarea>
